@@ -254,4 +254,15 @@ function dumbxml:iter()
   return function() return self:next() end
 end
 
+-- MTA (Multi Theft Auto, http://mtasa.com/) specific code begin
+-- you can delete it if you do not want to use this in MTA
+local function check_mta()
+  -- export as a global name, since require is disabled...
+  if getVersion().mta then
+    _G.dumbxml = dumbxml
+  end
+end
+pcall(check_mta)
+-- end of MTA specific code
+
 return dumbxml

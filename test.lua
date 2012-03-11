@@ -4,8 +4,6 @@
 -- To Public License, Version 2, as published by Sam Hocevar. See
 -- http://sam.zoy.org/wtfpl/COPYING for more details.
 
-require 'dumbxml'
-
 -- count number of elements in a table
 function tblcnt(tbl)
   local n = 0
@@ -13,7 +11,9 @@ function tblcnt(tbl)
   return n
 end
 
+assert(dumbxml == nil)
 local dxml = require('dumbxml')
+assert(dumbxml == nil)
 
 -- make sure alternative names are actually the same
 assert(dxml.START_TAG == dxml.START_ELEMENT)
