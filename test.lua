@@ -73,6 +73,29 @@ assert(i.attrs.ghi == 'jkl')
 assert(i.attrs.xyz == 'xyz')
 assert(tblcnt(i.attrs) == 3)
 
+i = f:next()
+assert(i.type == dxml.TEXT)
+assert(i.text == 'baz')
+
+i = f:next()
+assert(i.type == dxml.END_TAG)
+assert(i.name == 'foo')
+assert(f:next() == nil)
+
+--------------------------------------------------------------------------------
+print('attributes #2')
+f = dxml.fromString('<foo bar=def></foo>')
+i = f:next()
+assert(i.type == dxml.START_TAG)
+assert(i.name == 'foo')
+assert(tblcnt(i.attrs) == 1)
+assert(i.attrs.bar == 'def')
+
+i = f:next()
+assert(i.type == dxml.END_TAG)
+assert(i.name == 'foo')
+assert(f:next() == nil)
+
 --------------------------------------------------------------------------------
 print('nested tags')
 f = dxml.fromString('<foo>bar<ze>zem<xyz /></ze>o</foo>')

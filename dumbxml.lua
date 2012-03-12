@@ -120,9 +120,10 @@ local function parse_attrs(obj, out)
         table.insert(value, d)
       end
       c = obj.getchar()
-    else -- look until whitespace
+    else -- look until whitespace/tag end
       while true do
-        if obj.tag_whitespace[c] then break
+        if obj.tag_whitespace[c] or c == obj.tag_terminate or
+          c == obj.tag_separator_end then break
         elseif c == obj.entity_start then
           obj.current_char = c
           c = parse_entity(obj).value
