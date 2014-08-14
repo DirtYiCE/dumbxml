@@ -32,7 +32,7 @@ local dumbxml = {
   },
   unknown_entity = function(obj, entity)
     obj.error("unknown entity "..entity)
-    return obj.entity_start..entity
+    return obj.entity_start..entity..obj.entity_end
   end,
 
   error = error,
