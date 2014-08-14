@@ -252,7 +252,7 @@ function dumbxml:next()
 end
 
 function dumbxml:iter()
-  return function() return self:next() end
+  return self.next, self
 end
 
 -- MTA (Multi Theft Auto, http://mtasa.com/) specific code begin
